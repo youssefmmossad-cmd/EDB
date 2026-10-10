@@ -3,6 +3,14 @@ import express from "express";
 const app = express();
 
 // ========== MIDDLEWARE ==========
+// Log every request, then pass it on
+app.use((req, res, next) => {
+  console.log(req.method, req.url);
+  next();
+});
+
+// Read JSON request bodies into req.body
+app.use(express.json());
 
 // ========== DATABASE ==========
 // Our fake database for now
